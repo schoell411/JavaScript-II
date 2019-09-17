@@ -2,6 +2,9 @@
 
 const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
+const list = ['Eagles', 'Cowboys', 'Bears', 'Steelers'];
+
+
 /* 
 
   // GIVEN THIS PROBLEM:
@@ -77,11 +80,19 @@ console.log(multiplyNums(3,3, NumSquared));
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
-  return 
+  for (i=0; i < list.length; i++){
+    if(item === list[i]){
+      return cb(true);
+    }
+      return cb(false);
+  }
 }
+
 //test
-containsTest = function(testAnswer){
-console.log(contains("chalk", items, isIncluded())
+contains("Desk", items, function(containTest){
+  console.log(containTest);
+});
+
 
 /* STRETCH PROBLEM */
 
