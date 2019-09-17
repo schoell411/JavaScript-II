@@ -58,28 +58,99 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach(function(names){
+  fullNames.push(`${names.first_name} ${names.last_name}`);
+})
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+firstNamesAllCaps = 
+runners.map(function(element){
+  return element.first_name.toUpperCase();
+})
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
+runnersLargeSizeShirt = 
+  runners.filter(function(largeRunners){
+    return largeRunners.shirt_size === 'L';
+  })
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
 let ticketPriceTotal = 0;
-console.log(ticketPriceTotal);
+ticketPriceTotal =
+  runners.reduce(function(price, runner){
+    return price + runner.donation;
+  }, 0)
+console.log("$" + ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+/* Problem 1
+--The director wants to send a special "VIP" thank you gift to all of the runners that donated at least $100. Create an array called VIPrunners that will list the runners that donated $100 or more. */
+let VIPrunners = [];
+VIPrunners =
+  runners.filter(function(VIP){
+    return VIP.donation >= 100; 
+  })
+console.log(VIPrunners);
 
-// Problem 2
+/* Problem 2
+--The director wants to send an email to each of the particpants, thanking them for supporting the 5k run. Create an array called emailList that lists all of the runners first and last names, and their email address. */
+let emailList = [];
+runners.forEach(function(runner){
+  emailList.push(`Name: ${runner.first_name} ${runner.last_name} / Email: ${runner.email}`);
+})
+console.log(emailList);
 
-// Problem 3
+/* Problem 3
+--The director want to break up the participants into different arrays based on their shirt size to make the deliveries of the shirts easier. Create a new array for each shirt size, and include the particpants in each array with the corresponding shirt size. */
+let smallShirts = [];
+smallShirts =
+  runners.filter(function(smallRunners){
+    return smallRunners.shirt_size === "S";
+  })
+
+let mediumShirts = [];
+mediumShirts =
+  runners.filter(function(medRunners){
+    return medRunners.shirt_size === "M";
+  })
+
+let largeShirts = [];
+largeShirts =
+  runners.filter(function(largeRunners){
+    return largeRunners.shirt_size === "L";
+  })
+
+let XlargeShirts = [];
+XlargeShirts =
+  runners.filter(function(XlargeRunners){
+    return XlargeRunners.shirt_size === "XL"
+  })
+
+let XXlargeShirts = [];
+XXlargeShirts =
+  runners.filter(function(XXlargeRunners){
+    return XXlargeRunners.shirt_size === "2XL"
+  })
+
+let XXXlargeShirts = [];
+XXXlargeShirts =
+  runners.filter(function(XXXlargeRunners){
+    return XXXlargeRunners.shirt_size === "3XL"
+  })
+
+console.log(smallShirts);
+console.log(mediumShirts);
+console.log(largeShirts);
+console.log(XlargeShirts);
+console.log(XXlargeShirts);
+console.log(XXXlargeShirts);
